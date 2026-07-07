@@ -20,7 +20,7 @@ public class DICOMImage {
             fileattributes.read(infile);
             SourceImage dcImage = new SourceImage(fileattributes);
             for(int i=0; i<dcImage.getNumberOfFrames(); i++) {
-                BufferedImage image = dcImage.getBufferedImage();
+                BufferedImage image = dcImage.getBufferedImage(i);
                 frames.add(new DICOMFrame(image));
             }
         } catch (Exception e) {
