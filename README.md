@@ -1,6 +1,6 @@
 # DICOM-Teilaufgabe 2
 
-In dieser Woche beginnen wir, das GUI zur Anzeige der DICOM-Dateien (in Anlehnung an Ihre Ergebnisse aus dem Workshp) zu implementieren.
+In dieser Woche beginnen wir, das GUI zur Anzeige der DICOM-Dateien zu implementieren.
 
 Auch hier lohnt es sich, zunächst die komplette Aufgabenstellung zu lesen um die Zusammenhänge und den Programmaufbau zu verstehen, bevor Sie mit der Implementation beginnen, und dann schrittweise vorzugehen (also z. B. zuerst das ```MainFrame``` mit drei ```JLabel```, um zu sehen, dass es ein Fenster gibt und Sie die Labels da sehen, wo diese hingehören; dann um ein ```ImageListPanel```, das nichts außer dem Titel-Label anzeigt erweitern; dann ein ```ImageDetailPanel``` hinzufügen, das einfach nur ein rotes Viereck mit der richtigen Größe zeichnet - und so weiter und so fort).
 
@@ -75,7 +75,7 @@ Erstellen Sie für die Kontrollelemente unten (die 2 ```JLabel```, den ```JSlide
 
 Das ```ImageListPanel``` zeigt das geladene Bild sowie später die markierten Frames daraus an. Es sollte von ```JPanel``` erben.
 
-Übergeben Sie an den Constructor eine Instanz von ```MainFrame``` (wenn Sie aus dem ```MainFrame``` heraus das ```ImageListPanel``` erstellen, müssen Sie also als Argument ```this```) übergeben. Das ist nötig, damit Sie über die in ```MainFrame``` implementierten Methoden die Anzeige der Bildserie steuern können. In Programmierung 3 werden Sie eine sauberere Methode kennenlernen, diese Kommunikation innerhalb des Programms zu lösen (das Model-View-Control-Designpattern), aber das würde an dieser Stelle zu weit führen.
+Übergeben Sie an den Constructor eine Instanz von ```MainFrame``` (wenn Sie aus dem ```MainFrame``` heraus das ```ImageListPanel``` erstellen, müssen Sie also als Argument ```this``` übergeben). Das ist nötig, damit Sie über die in ```MainFrame``` implementierten Methoden die Anzeige der Bildserie steuern können. In Programmierung 3 werden Sie eine sauberere Methode kennenlernen, diese Kommunikation innerhalb des Programms zu lösen (das Model-View-Control-Designpattern), aber das würde an dieser Stelle zu weit führen.
 
 Verwenden Sie in ```ImageListPanel``` ein ```BoxLayout``` (siehe [Oracle-Dokumentation](https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html)) und fügen Sie zunächst ein ```JLabel``` "Bilder" hinzu. Denken Sie daran, dass Sie die Ausrichtung der einzelnen Elemente über ```setAlignmentX()``` und ```setAlignmentY()``` beeinflussen können und die präferierte Größe der Komponente mit ```setPreferredSize()```. Horizontale und vertikale Abstände können Sie im ```BoxLayout``` mit ```Box.createVerticalStrut()``` und ```Box.createHorizontalStrut()``` erzeugen.  
 
@@ -104,9 +104,3 @@ Das ```ImageDetailPanel``` braucht neben dem Constructor vorerst nur zwei Method
 * ```public void paintComponent(Graphics g)```: Falls noch kein Frame gesetzt wurde, wird nur in schwarzer Schrift "Bitte ein Bild laden" angezeigt. Sonst wird - je nachdem ob ```showEdges``` ```true``` oder ```false``` ist - das Originalbild oder das Ergebnis der Kantendetektion (vorerst nur mit dem Standardwert 10 für brightness) gemalt.
 
 Fügen Sie zuletzt im Constructor dem ```ImageDetailPanel``` einen ```MouseWheelListener``` hinzu der, wenn das Mausrad gedreht wurde, je nach Richtung ```MainFrame.setPreviousDetailFrame()``` oder ```MainFrame.setNextDetailFrame()``` aufruft.
-
-## Abgabe
-
-Im Ordner ```Bilder``` finden Sie eine Datei ```DICOM-2.mp4```, die in einigen Sekunden kurz die Bedienung der beschriebenen Elemente des Programms zeigt.
-
-Fügen Sie Ihrem Repository ebenfalls im Ordner ```Bilder``` ein maximal 30-sekündiges Video hinzu, das auf ähnliche Art die Bedienung Ihres Programms zeigt. Die Videodatei sollte nicht größer als 5 MB sein.
